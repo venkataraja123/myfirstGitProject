@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="adf78ab0-003d-4365-bc5c-fb7ba755de8b" >
+		<http:listener-connection host="0.0.0.0" port="8087" />
+	</http:listener-config>
+	<flow name="firstgitprojectdemoFlow" doc:id="3e356812-ecd8-44d1-9bf3-bfeba2639c8c" >
+		<http:listener doc:name="Listener" doc:id="fbf15171-9fe2-4aee-98a8-1721f0d8bc47" config-ref="HTTP_Listener_config" path="/git"/>
+		<set-payload value="My first Git project" doc:name="Set Payload" doc:id="bf192a54-3d51-4b9b-aff0-49623442a7d7" />
+		<logger level="INFO" doc:name="Logger" doc:id="e53d38b4-ca8a-4f15-9b0c-d35319bd42d7" message="Out from git project:: #[payload]"/>
+	</flow>
+</mule>
